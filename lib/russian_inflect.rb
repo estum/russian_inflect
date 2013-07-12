@@ -46,6 +46,10 @@ class RussianInflect
     inflected_words.join(' ')
   end
   
+  def self.inflect(text, gcase)
+    self.new(text).to_case(gcase)
+  end
+  
   def self.detect_case_group(noun)
     case noun
     when /(а|я|и)$/i then 1
