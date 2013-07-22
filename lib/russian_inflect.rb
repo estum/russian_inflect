@@ -18,10 +18,11 @@ class RussianInflect
   INSTRUMENTAL    = :instrumental  # творительный
   PREPOSITIONAL   = :prepositional # предложный
   
-  attr_accessor :words, :noun, :case_group
+  attr_accessor :source, :words, :noun, :case_group
   
-  def initialize(text, options = {})
-    @words = text.split
+  def initialize(source, options = {})
+    @source = source
+    @words = source.split
     @noun = case options[:noun]
             when String then options[:noun]
             when Fixnum then @words[options[:noun]]
