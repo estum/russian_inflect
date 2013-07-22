@@ -59,6 +59,9 @@ second_group:
       -
         test: [ы]
         mods: [-ов, -ам, ., -ами, -ах]
+      -
+        test: [ий]
+        mods: [-я, -ю, ., -ем, -и]
 
 third_group:
   adjective:

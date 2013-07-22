@@ -22,4 +22,9 @@ describe RussianInflect do
     source = RussianInflect.new("Красное вино")
   	source.test_each_case "Красное вино", "Красного вина", "Красному вину", "Красное вино", "Красным вином", "Красном вине"
   end
+  
+  it "должен правильно склонять слово «Комментарий»" do
+    source = RussianInflect.new("Комментарий")
+  	source.test_each_case "Комментарий", "Комментария", "Комментарию", "Комментарий", "Комментарием", "Комментарии"
+  end
 end
