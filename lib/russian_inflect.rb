@@ -3,6 +3,7 @@
 require 'yaml'
 require 'unicode_utils'
 require 'active_support'
+require 'active_support/core_ext'
 require 'russian_inflect/rules'
 require "russian_inflect/version"
 
