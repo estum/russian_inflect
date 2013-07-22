@@ -1,6 +1,8 @@
 # RussianInflect
 
-Склонение по падежам заголовков на русском языке
+Склонение по падежам заголовков на русском языке.  
+
+Многое подсмотрено в геме [petrovich](https://github.com/rocsci/petrovich). Различие в том, что RussianInflect склоняет не имена и фамилии, а словосочетания, например, названия товаров. 
 
 ## Installation
 
@@ -18,17 +20,15 @@ Or install it yourself as:
 
 ## Usage
 
-    RussianInflect.inflect("Хорошая погода", :nominative)   # Хорошая погода
-    RussianInflect.inflect("Хорошая погода", :genitive)   # Хорошей погоды
-    RussianInflect.inflect("Хорошая погода", :dative)   # Хорошей погоде
-    RussianInflect.inflect("Хорошая погода", :accusative)   # Хорошую погоду
+    RussianInflect.inflect("Хорошая погода", :nominative)     # Хорошая погода
+    RussianInflect.inflect("Хорошая погода", :genitive)       # Хорошей погоды
+    RussianInflect.inflect("Хорошая погода", :dative)         # Хорошей погоде
+    RussianInflect.inflect("Хорошая погода", :accusative)     # Хорошую погоду
     RussianInflect.inflect("Хорошая погода", :instrumental)   # Хорошей погодой
-    RussianInflect.inflect("Хорошая погода", :prepositional)   # Хорошей погоде
+    RussianInflect.inflect("Хорошая погода", :prepositional)  # Хорошей погоде
 
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+## Помощь гему
+* Нужны тесты для всяких окончаний, исключений и т.п.   
+  Дополнять их просто: в [spec/lib/russian_inflect_spec.rb](/estum/russian_inflect/blob/master/spec/lib/russian_inflect_spec.rb) нужно добавить пример словосочетания и правильные результаты склонения по аналогии с уже добавленными примерами.
+* Правила склонения пока далеки от идеала и тоже ждут своего Розенталя. Они похожи на правила из гема [petrovich](https://github.com/rocsci/petrovich) и находятся в [lib/russian_inflect/rules.yml](/estum/russian_inflect/blob/master/lib/russian_inflect/rules.yml).
+* Как видите, ридми тоже не мешало бы переписать.
