@@ -18,12 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-	RussianInflect.inflect("Хорошая погода", :nominative)    # Хорошая погода
-	RussianInflect.inflect("Хорошая погода", :genitive)      # Хорошой погоды
-	RussianInflect.inflect("Хорошая погода", :dative)        # Хорошой погоде
-	RussianInflect.inflect("Хорошая погода", :accusative)    # Хорошую погоду
-	RussianInflect.inflect("Хорошая погода", :instrumental)  # Хорошой погодой
-	RussianInflect.inflect("Хорошая погода", :prepositional) # Хорошой погоде
+    RussianInflect.inflect("Хорошая погода", :nominative)   # Хорошая погода
+    RussianInflect.inflect("Хорошая погода", :genitive)   # Хорошей погоды
+    RussianInflect.inflect("Хорошая погода", :dative)   # Хорошей погоде
+    RussianInflect.inflect("Хорошая погода", :accusative)   # Хорошую погоду
+    RussianInflect.inflect("Хорошая погода", :instrumental)   # Хорошей погодой
+    RussianInflect.inflect("Хорошая погода", :prepositional)   # Хорошей погоде
 
 ## Contributing
 

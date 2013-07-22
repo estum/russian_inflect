@@ -63,7 +63,7 @@ class RussianInflect
   
   def self.detect_type(word)
     case word
-    when /(ая|яя|ые|ие|ый|ий|ое|ее)$/i then :adjective
+    when /(ая|яя|ые|ие|ый|ой|ий|ое|ее)$/i then :adjective
     else :noun
     end
   end
