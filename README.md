@@ -20,12 +20,23 @@ Or install it yourself as:
 
 ## Usage
 
-    RussianInflect.inflect("Хорошая погода", :nominative)     # Хорошая погода
-    RussianInflect.inflect("Хорошая погода", :genitive)       # Хорошей погоды
-    RussianInflect.inflect("Хорошая погода", :dative)         # Хорошей погоде
-    RussianInflect.inflect("Хорошая погода", :accusative)     # Хорошую погоду
-    RussianInflect.inflect("Хорошая погода", :instrumental)   # Хорошей погодой
-    RussianInflect.inflect("Хорошая погода", :prepositional)  # Хорошей погоде
+```ruby
+RussianInflect.inflect("Хорошая погода", :nominative)     # => Хорошая погода
+RussianInflect.inflect("Хорошая погода", :genitive)       # => Хорошей погоды
+RussianInflect.inflect("Хорошая погода", :dative)         # => Хорошей погоде
+RussianInflect.inflect("Хорошая погода", :accusative)     # => Хорошую погоду
+RussianInflect.inflect("Хорошая погода", :instrumental)   # => Хорошей погодой
+RussianInflect.inflect("Хорошая погода", :prepositional)  # => Хорошей погоде
+```
+
+или
+
+```ruby
+words = RussianInflect.new("Хорошая погода")
+words.to_case :genitive     # => Хорошей погоды
+words.to_case :dative       # => Хорошей погоде
+# etc...
+```
 
 ## Помощь гему
 * Нужны тесты для всяких окончаний, исключений и т.п.   
