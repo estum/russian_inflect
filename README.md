@@ -30,5 +30,5 @@ Or install it yourself as:
 ## Помощь гему
 * Нужны тесты для всяких окончаний, исключений и т.п.   
   Дополнять их просто: в [spec/lib/russian_inflect_spec.rb](/estum/russian_inflect/blob/master/spec/lib/russian_inflect_spec.rb) нужно добавить пример словосочетания и правильные результаты склонения по аналогии с уже добавленными примерами.
-* Правила склонения пока далеки от идеала и тоже ждут своего Розенталя. Они похожи на правила из гема [petrovich](https://github.com/rocsci/petrovich) и находятся в [lib/russian_inflect/rules.yml](/estum/russian_inflect/blob/master/lib/russian_inflect/rules.yml).
+* Правила склонения пока далеки от идеала и тоже ждут своего Розенталя. Они похожи на правила из гема [petrovich](https://github.com/rocsci/petrovich) и находятся в [lib/russian_inflect/rules.yml](/lib/russian_inflect/rules.yml).
 * Как видите, ридми тоже не мешало бы переписать.
