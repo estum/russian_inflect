@@ -1,7 +1,6 @@
-# encoding: UTF-8
-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 require 'russian_inflect/version'
 
 Gem::Specification.new do |spec|
@@ -19,9 +18,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "activesupport", ">= 3.0.0"
-  spec.add_dependency "unicode_utils", "~> 1.4"
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_dependency "unicode_utils", ">= 1.4"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
 end
