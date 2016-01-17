@@ -33,11 +33,13 @@ class RussianInflect
 
   def to_case(gcase, force_downcase: false)
     after_prepositions = false
+    prev_type = nil
 
     inflected_words = words.map do |word|
       unless after_prepositions
         downcased = UnicodeUtils.downcase(word)
-        if preposition?(downcased)
+        current_type = self.class.detect_type(word)
+        if preposition?(downcased, prev_type, current_type)
           after_prepositions = true
         else
           result = Rules[case_group].inflect(downcased, gcase)
@@ -48,6 +50,7 @@ class RussianInflect
             word[0, len] << result[len..-1]
           end
         end
+        prev_type = current_type
       end
 
       word
@@ -56,8 +59,10 @@ class RussianInflect
     inflected_words.join(' ')
   end
 
-  def preposition?(word)
-    Rules.prepositions.include?(word) || GROUPS[self.class.detect_case_group(word)] != @case_group
+  def preposition?(word, prev_type, current_type)
+    Rules.prepositions.include?(word) ||
+      GROUPS[self.class.detect_case_group(word)] != @case_group ||
+      (prev_type == :noun && current_type == :noun)
   end
 
   def self.inflect(text, gcase, force_downcase: false)
