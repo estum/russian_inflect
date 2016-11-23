@@ -11,8 +11,8 @@ class RussianInflect
   INSTRUMENTAL    = :instrumental  # творительный
   PREPOSITIONAL   = :prepositional # предложный
 
-  CASES = [NOMINATIVE, GENITIVE, DATIVE, ACCUSATIVE, INSTRUMENTAL, PREPOSITIONAL]
-  GROUPS = [nil, :first, :second, :third]
+  CASES = [NOMINATIVE, GENITIVE, DATIVE, ACCUSATIVE, INSTRUMENTAL, PREPOSITIONAL].freeze
+  GROUPS = [nil, :first, :second, :third].freeze
 
   attr_accessor :source, :words, :noun, :case_group
 

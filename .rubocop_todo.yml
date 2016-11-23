@@ -70,10 +70,3 @@ Style/HashSyntax:
 Style/IndentationWidth:
   Exclude:
     - 'lib/russian_inflect.rb'
-
-# Offense count: 3
-# Cop supports --auto-correct.
-Style/MutableConstant:
-  Exclude:
-    - 'lib/russian_inflect.rb'
-    - 'lib/russian_inflect/version.rb'
