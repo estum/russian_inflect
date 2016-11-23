@@ -1,0 +1,51 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'vendor/**/*'
+  TargetRubyVersion: 2.3
+Documentation:
+  Enabled: false
+LineLength:
+  Enabled: false
+  Max: 100
+Lint/AssignmentInCondition:
+  Enabled: false
+Rails:
+  Enabled: true
+Rails/ActionFilter:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/CollectionMethods:
+  Description: Preferred collection methods.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#map-find-select-reduce-size
+  Enabled: true
+  PreferredMethods:
+    collect: map
+    collect!: map!
+    find: detect
+    find_all: select
+    reduce: inject
+Style/FileName:
+  Description: Use snake_case for source file names.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#snake-case-files
+  Enabled: false
+  Exclude: []
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/MultilineOperationIndentation:
+  Enabled: false
+Style/PredicateName:
+  Description: Check the names of predicate methods.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#bool-methods-qmark
+  Enabled: true
+  NamePrefix:
+  - is_
+  - has_
+  - have_
+  NamePrefixBlacklist:
+  - is_
+  Exclude:
+  - spec/**/*
