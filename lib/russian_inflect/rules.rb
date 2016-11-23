@@ -75,7 +75,7 @@ class RussianInflect
       # word = UnicodeUtils.downcase(word)
 
       rule[:test].any? do |chars|
-        test = match_whole_word ? word : word.slice([word.length - chars.length, 0].max .. -1)
+        test = match_whole_word ? word : word.slice([word.length - chars.length, 0].max..-1)
         test == chars
       end
     end

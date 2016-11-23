@@ -85,9 +85,3 @@ Style/MutableConstant:
 Style/SignalException:
   Exclude:
     - 'lib/russian_inflect/rules.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/SpaceInsideRangeLiteral:
-  Exclude:
-    - 'lib/russian_inflect/rules.rb'
