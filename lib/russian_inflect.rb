@@ -44,11 +44,11 @@ class RussianInflect
         else
           result = Rules[case_group].inflect(downcased, gcase)
           word = if force_downcase
-            result
-          else
-            len = downcased.each_char.take_while.with_index { |x, n| x == result[n] }.size
-            word[0, len] << result[len..-1]
-          end
+                   result
+                 else
+                   len = downcased.each_char.take_while.with_index { |x, n| x == result[n] }.size
+                   word[0, len] << result[len..-1]
+                 end
         end
         prev_type = current_type
       end
