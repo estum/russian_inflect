@@ -77,11 +77,3 @@ Style/MutableConstant:
   Exclude:
     - 'lib/russian_inflect.rb'
     - 'lib/russian_inflect/version.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: only_raise, only_fail, semantic
-Style/SignalException:
-  Exclude:
-    - 'lib/russian_inflect/rules.rb'
