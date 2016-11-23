@@ -91,13 +91,3 @@ Style/SignalException:
 Style/SpaceInsideRangeLiteral:
   Exclude:
     - 'lib/russian_inflect/rules.rb'
-
-# Offense count: 16
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Exclude:
-    - 'Rakefile'
-    - 'lib/russian_inflect.rb'
-    - 'lib/russian_inflect/version.rb'

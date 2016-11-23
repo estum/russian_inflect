@@ -1,7 +1,7 @@
 require 'yaml'
 require 'unicode_utils'
 require 'russian_inflect/rules'
-require "russian_inflect/version"
+require 'russian_inflect/version'
 
 class RussianInflect
   NOMINATIVE      = :nominative    # именительный
