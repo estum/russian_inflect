@@ -1,7 +1,7 @@
 require 'yaml'
 require 'unicode_utils'
 require 'russian_inflect/rules'
-require "russian_inflect/version"
+require 'russian_inflect/version'
 
 class RussianInflect
   NOMINATIVE      = :nominative    # именительный
@@ -11,8 +11,8 @@ class RussianInflect
   INSTRUMENTAL    = :instrumental  # творительный
   PREPOSITIONAL   = :prepositional # предложный
 
-  CASES = [NOMINATIVE, GENITIVE, DATIVE, ACCUSATIVE, INSTRUMENTAL, PREPOSITIONAL]
-  GROUPS = [nil, :first, :second, :third]
+  CASES = [NOMINATIVE, GENITIVE, DATIVE, ACCUSATIVE, INSTRUMENTAL, PREPOSITIONAL].freeze
+  GROUPS = [nil, :first, :second, :third].freeze
 
   attr_accessor :source, :words, :noun, :case_group
 
@@ -44,11 +44,11 @@ class RussianInflect
         else
           result = Rules[case_group].inflect(downcased, gcase)
           word = if force_downcase
-            result
-          else
-            len = downcased.each_char.take_while.with_index { |x, n| x == result[n] }.size
-            word[0, len] << result[len..-1]
-          end
+                   result
+                 else
+                   len = downcased.each_char.take_while.with_index { |x, n| x == result[n] }.size
+                   word[0, len] << result[len..-1]
+                 end
         end
         prev_type = current_type
       end

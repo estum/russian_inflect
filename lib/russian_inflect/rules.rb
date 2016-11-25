@@ -63,7 +63,7 @@ class RussianInflect
         scoped_rules = rules[type][:suffixes]
       end
 
-      find(name, scoped_rules) || fail(UnknownRuleException, name)
+      find(name, scoped_rules) || raise(UnknownRuleException, name)
     end
 
     def find(name, scoped_rules, match_whole_word = false)
@@ -75,7 +75,7 @@ class RussianInflect
       # word = UnicodeUtils.downcase(word)
 
       rule[:test].any? do |chars|
-        test = match_whole_word ? word : word.slice([word.length - chars.length, 0].max .. -1)
+        test = match_whole_word ? word : word.slice([word.length - chars.length, 0].max..-1)
         test == chars
       end
     end
@@ -105,7 +105,7 @@ class RussianInflect
       when ACCUSATIVE    then rule[:mods][2]
       when INSTRUMENTAL  then rule[:mods][3]
       when PREPOSITIONAL then rule[:mods][4]
-                         else fail UnknownCaseException, gcase
+                         else raise UnknownCaseException, gcase
       end
     end
   end
