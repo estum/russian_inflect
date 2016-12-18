@@ -2,13 +2,13 @@
 *.rbc
 .bundle
 .config
-.yardoc
 .ruby-version
-Gemfile.lock
-InstalledFiles
+.yardoc
 _yardoc
 coverage
 doc/
+Gemfile.lock
+InstalledFiles
 lib/bundler/man
 pkg
 rdoc
