@@ -1,6 +1,6 @@
 RSpec.shared_examples 'inflection' do |answers|
   describe answers[0] do
-    let(:inflector) { RussianInflect.new(answers[0]) }
+    let(:inflector) { RussianInflect::Inflector.new(answers[0]) }
 
     RussianInflect::CASES.each_with_index do |inflection_case, index|
       context "with case #{inflection_case}" do
