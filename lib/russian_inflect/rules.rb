@@ -1,4 +1,4 @@
-class RussianInflect
+module RussianInflect
   UnknownError = Class.new(StandardError)
 
   class UnknownCaseException < UnknownError
@@ -41,7 +41,7 @@ class RussianInflect
     load_dictionary YAML.load_file(File.expand_path('../rules.yml', __FILE__))
 
     def inflect(word, gcase)
-      type = RussianInflect.detect_type(word)
+      type = RussianInflect::Detector.new(word).word_type
       find_and_apply(word, gcase, type)
     end
 
