@@ -7,6 +7,15 @@ RSpec.describe 'General' do
   describe 'word' do
     include_examples 'inflection', %w(Комментарий Комментария Комментарию
                                       Комментарий Комментарием Комментарии)
+
+    include_examples 'inflection', %w(Апрель Апреля Апрелю
+                                      Апрель Апрелем Апреле)
+
+    include_examples 'inflection', %w(Декабрь Декабря Декабрю
+                                      Декабрь Декабрем Декабре)
+
+    include_examples 'inflection', %w(Пароль Пароля Паролю
+                                      Пароль Паролем Пароле)
   end
 
   describe 'words' do

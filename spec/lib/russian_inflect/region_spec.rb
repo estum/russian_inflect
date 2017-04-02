@@ -12,4 +12,7 @@ RSpec.describe 'Region' do
 
   include_examples 'inflection', %w(Галицино Галицино Галицино
                                     Галицино Галицино Галицино)
+
+  include_examples 'inflection', %w(Ярославль Ярославля Ярославлю
+                                    Ярославль Ярославлем Ярославле)
 end
