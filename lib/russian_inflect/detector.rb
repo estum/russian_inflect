@@ -9,7 +9,7 @@ module RussianInflect
     def case_group
       case word
       when /(а|я|и)$/i then 1
-      when /(о|е|ы)$/i then 2
+      when /(о|е|ы|вль|поль|коль|куль|прель|обль|чутль|раль|варь|брь|пароль)$/i then 2
       when /(мя|ь)$/i  then 3
       else                  2
       end
