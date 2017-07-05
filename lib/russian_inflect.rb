@@ -1,6 +1,7 @@
 require 'yaml'
 require 'unicode_utils'
 require 'russian_inflect/cases'
+require 'russian_inflect/detector'
 require 'russian_inflect/rules'
 require 'russian_inflect/version'
 
@@ -62,19 +63,11 @@ class RussianInflect
     new(text).to_case(gcase, force_downcase: force_downcase)
   end
 
-  def self.detect_case_group(noun)
-    case noun
-    when /(а|я|и)$/i then 1
-    when /(о|е|ы|вль|поль|коль|куль|прель|обль|чутль|раль|варь|брь|пароль)$/i then 2
-    when /(мя|ь)$/i  then 3
-                     else 2
-    end
+  def self.detect_case_group(word)
+    Detector.new(word).case_group
   end
 
   def self.detect_type(word)
-    case word
-    when /(ая|яя|ые|ие|ый|ой|[^р]ий|ое|ее)$/i then :adjective
-                                              else :noun
-    end
+    Detector.new(word).word_type
   end
 end
