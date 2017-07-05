@@ -7,12 +7,6 @@
 # versions of RuboCop, may require this file to be generated again.
 
 # Offense count: 1
-# Cop supports --auto-correct.
-Lint/UnifiedInteger:
-  Exclude:
-    - 'lib/russian_inflect/inflector.rb'
-
-# Offense count: 1
 Metrics/AbcSize:
   Max: 22
 
