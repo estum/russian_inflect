@@ -1,4 +1,4 @@
-class RussianInflect
+module RussianInflect
   UnknownError = Class.new(StandardError)
 
   class UnknownCaseException < UnknownError

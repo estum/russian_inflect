@@ -1,4 +1,4 @@
-class RussianInflect
+module RussianInflect
   NOMINATIVE    = :nominative    # именительный
   GENITIVE      = :genitive      # родительный
   DATIVE        = :dative        # дательный

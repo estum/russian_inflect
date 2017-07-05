@@ -1,4 +1,4 @@
-class RussianInflect
+module RussianInflect
   class Inflector
     GROUPS = [nil, :first, :second, :third].freeze
 

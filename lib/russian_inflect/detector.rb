@@ -1,4 +1,4 @@
-class RussianInflect
+module RussianInflect
   class Detector
     attr_accessor :word
 

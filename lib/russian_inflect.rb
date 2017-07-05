@@ -6,7 +6,7 @@ require 'russian_inflect/inflector'
 require 'russian_inflect/rules'
 require 'russian_inflect/version'
 
-class RussianInflect
+module RussianInflect
   def self.detect_case_group(word)
     Detector.new(word).case_group
   end
