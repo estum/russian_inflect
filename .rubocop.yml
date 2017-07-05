@@ -5,17 +5,28 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/**/*'
   TargetRubyVersion: 2.3
-Documentation:
-  Enabled: false
-LineLength:
-  Enabled: false
-  Max: 100
+Layout/IndentationConsistency:
+  EnforcedStyle: normal
 Lint/AssignmentInCondition:
   Enabled: false
+Lint/Debugger:
+  Enabled: true
+Lint/DefEndAlignment:
+  AutoCorrect: true
+Lint/EndAlignment:
+  AutoCorrect: true
+  EnforcedStyleAlignWith: keyword
+Metrics/LineLength:
+  Enabled: false
+  Max: 100
 Rails:
   Enabled: true
-Rails/ActionFilter:
+Style/AsciiComments:
   Enabled: false
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+Style/AutoResourceCleanup:
+  Enabled: true
 Style/ClassAndModuleChildren:
   Enabled: false
 Style/CollectionMethods:
@@ -28,24 +39,18 @@ Style/CollectionMethods:
     find: detect
     find_all: select
     reduce: inject
+Style/Documentation:
+  Enabled: false
 Style/FileName:
   Description: Use snake_case for source file names.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#snake-case-files
   Enabled: false
-  Exclude: []
-Style/FrozenStringLiteralComment:
-  Enabled: false
-Style/MultilineOperationIndentation:
-  Enabled: false
-Style/PredicateName:
-  Description: Check the names of predicate methods.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#bool-methods-qmark
-  Enabled: true
-  NamePrefix:
-  - is_
-  - has_
-  - have_
-  NamePrefixBlacklist:
-  - is_
-  Exclude:
-  - spec/**/*
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%i': '()'
+    '%I': '()'
+    '%r': '{}'
+    '%w': '()'
+    '%W': '()'
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
