@@ -89,9 +89,9 @@ module RussianInflect
 
       modificator.each_char do |char|
         case char
-        when '.'
+        when '.' then nil
         when '-' then result.slice!(-1)
-                 else result << char
+        else          result << char
         end
       end
 
@@ -107,7 +107,7 @@ module RussianInflect
       when ACCUSATIVE    then rule[:mods][2]
       when INSTRUMENTAL  then rule[:mods][3]
       when PREPOSITIONAL then rule[:mods][4]
-                         else raise UnknownCaseException, gcase
+      else                    raise UnknownCaseException, gcase
       end
     end
   end
