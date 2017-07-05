@@ -40,23 +40,3 @@ Metrics/CyclomaticComplexity:
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
   Max: 22
-
-# Offense count: 13
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: when_needed, always, never
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'Gemfile'
-    - 'Rakefile'
-    - 'lib/russian_inflect.rb'
-    - 'lib/russian_inflect/cases.rb'
-    - 'lib/russian_inflect/detector.rb'
-    - 'lib/russian_inflect/inflector.rb'
-    - 'lib/russian_inflect/rules.rb'
-    - 'lib/russian_inflect/version.rb'
-    - 'russian_inflect.gemspec'
-    - 'spec/lib/russian_inflect/general_spec.rb'
-    - 'spec/lib/russian_inflect/region_spec.rb'
-    - 'spec/shared_examples/inflection.rb'
-    - 'spec/spec_helper.rb'

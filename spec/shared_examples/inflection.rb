@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'inflection' do |answers|
   describe answers[0] do
     let(:inflector) { RussianInflect::Inflector.new(answers[0]) }

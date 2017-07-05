@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RussianInflect
   NOMINATIVE    = :nominative    # именительный
   GENITIVE      = :genitive      # родительный

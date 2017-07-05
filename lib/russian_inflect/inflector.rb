@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RussianInflect
   class Inflector
     GROUPS = [nil, :first, :second, :third].freeze

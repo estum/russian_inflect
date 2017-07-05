@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RussianInflect
   class Detector
     attr_accessor :word
