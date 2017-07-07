@@ -6,9 +6,7 @@ module RussianInflect
 
     attr_accessor :source, :words, :noun, :case_group
 
-    def initialize(source, options = nil)
-      options ||= {}
-
+    def initialize(source, options = {})
       @source = source       # Исходное предложение
       @words  = source.split # Разбиваем на слова
 
