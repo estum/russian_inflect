@@ -12,12 +12,10 @@ module RussianInflect
 
       # Пытаемся вычленить из предложения существительное
       @noun = case options[:noun]
-              when String then options[:noun] # Либо передаем существительное строкой
+              when String  then options[:noun] # Либо передаем существительное строкой
               when Integer then @words[options[:noun]] # Либо индексом в предложении
-              else
-                # Либо определяем тип слова автоматически
-                @words.detect { |w| RussianInflect::Detector.new(w).noun? }
-              end
+              else              @words.detect { |w| RussianInflect::Detector.new(w).noun? }
+              end               # Либо определяем тип слова автоматически
 
       # Определяем индекс группы существительного
       group = options.fetch(:group) { RussianInflect::Detector.new(@noun).case_group }
