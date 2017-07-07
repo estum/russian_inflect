@@ -33,6 +33,10 @@
 
   :second:
     :adjective:
+      :exceptions:
+        -
+          :test: [алексеевское]
+          :mods: [--ого, --ому, --ое, --им, --ом]
       :suffixes:
         -
           :test: [шое, шый, шой]
