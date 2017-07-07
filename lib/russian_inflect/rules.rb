@@ -61,10 +61,9 @@ module RussianInflect
       if scoped_rules = rules[type][:exceptions]
         ex = find(name, scoped_rules, true)
         return ex if ex
-      else
-        scoped_rules = rules[type][:suffixes]
       end
 
+      scoped_rules = rules[type][:suffixes]
       find(name, scoped_rules) || raise(UnknownRuleException, name)
     end
 
