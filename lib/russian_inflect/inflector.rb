@@ -27,12 +27,9 @@ module RussianInflect
 
       # Проходимся по каждому слову
       inflected_words = words.map do |word|
-        # Используем внешнюю переменную для хранения режима (пахнет)
-        if should_modify
-          # Даункейсим слово в чистом руби
-          downcased = UnicodeUtils.downcase(word)
-          # Детектим тип слова
-          current_type = RussianInflect::Detector.new(word).word_type
+        if should_modify # Используем внешнюю переменную для хранения режима (пахнет)
+          downcased = UnicodeUtils.downcase(word) # Даункейсим слово в чистом руби
+          current_type = RussianInflect::Detector.new(word).word_type # Детектим тип слова
 
           # Еще одна внешняя переменная с предыдущим состоянием (пахнет)
           if adverbal?(downcased, prev_type, current_type)
