@@ -29,7 +29,7 @@ module RussianInflect
 
     private
 
-    # Найти подходящее правило в исключениях или суффиксах
+    # Ищем правило в исключениях или суффиксах
     def rule_for(word, type)
       find(word, @rules[type][:exceptions], true) ||
         find(word, @rules[type][:suffixes]) ||
@@ -41,17 +41,15 @@ module RussianInflect
       scoped_rules.detect { |rule| match?(word, rule, match_whole_word) }
     end
 
-    # Проверить правило
+    # Проверяем, подходит ли правило под наше слово
     def match?(word, rule, match_whole_word = false)
-      # word = UnicodeUtils.downcase(word)
-
       rule[:test].any? do |chars|
         test = match_whole_word ? word : word.slice([word.length - chars.length, 0].max..-1)
         test == chars
       end
     end
 
-    # Применить правило
+    # Применяем правило к слову
     def apply(word, gcase, rule)
       modificator = modificator_for(gcase, rule)
       result = word.dup
@@ -67,7 +65,7 @@ module RussianInflect
       result
     end
 
-    # Получить модификатор из указанного правиля для указанного склонения
+    # Получить модификатор для указанного падежа из указанного правила
     def modificator_for(gcase, rule)
       case gcase.to_sym
       when NOMINATIVE    then '.'
