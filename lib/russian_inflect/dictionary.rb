@@ -31,16 +31,13 @@ module RussianInflect
 
     # Найти подходящее правило в исключениях или суффиксах
     def rule_for(word, type)
-      if scoped_rules = @rules[type][:exceptions]
-        ex = find(word, scoped_rules, true)
-        return ex if ex
-      end
-
-      scoped_rules = @rules[type][:suffixes]
-      find(word, scoped_rules) || raise(UnknownRuleException, word)
+      find(word, @rules[type][:exceptions], true) ||
+        find(word, @rules[type][:suffixes]) ||
+        raise(UnknownRuleException, word)
     end
 
     def find(word, scoped_rules, match_whole_word = false)
+      return if scoped_rules.nil?
       scoped_rules.detect { |rule| match?(word, rule, match_whole_word) }
     end
 
