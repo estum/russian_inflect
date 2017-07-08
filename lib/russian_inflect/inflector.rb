@@ -22,37 +22,49 @@ module RussianInflect
     end
 
     def to_case(gcase, force_downcase: false)
-      should_modify = true
-      prev_type = nil
-
-      # Проходимся по каждому слову
-      inflected_words = words.map do |word|
-        if should_modify # Используем внешнюю переменную для хранения режима (пахнет)
-          downcased = UnicodeUtils.downcase(word) # Даункейсим слово в чистом руби
-          current_type = RussianInflect::Detector.new(word).word_type # Детектим тип слова
-
-          # Еще одна внешняя переменная с предыдущим состоянием (пахнет)
-          if adverbal?(downcased, prev_type, current_type)
-            # Все это нужно для предложений вида "Камень в реке", чтобы "в реке" не склонялось
-            should_modify = false
-          else
-            word = RussianInflect::Rules[GROUPS[@case_group]].inflect(word, downcased, gcase)
-            word = UnicodeUtils.downcase(word) if force_downcase
-            prev_type = current_type
-          end
-        end
-
-        word
+      inflected_words = inflecting_words.map do |word|
+        downcased = UnicodeUtils.downcase(word) # Даункейсим слово в чистом руби
+        word = RussianInflect::Rules[GROUPS[@case_group]].inflect(word, downcased, gcase)
+        force_downcase ? UnicodeUtils.downcase(word) : word
       end
 
-      inflected_words.join(' ')
+      (inflected_words + adverbal).join(' ')
     end
 
+    private
+
     # Является ли текущее слово началом дополнительной (и несклоняющейся) части предложения?
-    def adverbal?(word, prev_type, current_type)
+    def adverbal_start?(word, prev_type, current_type)
       RussianInflect::Rules.prepositions.include?(word) ||
         RussianInflect::Detector.new(word).case_group != @case_group ||
         (prev_type == :noun && current_type == :noun)
+    end
+
+    def adverbal
+      return [] if words.length == 1
+      return [] if adverbal_index == -1
+      words[adverbal_index..-1]
+    end
+
+    def adverbal_index
+      @adverbal_index ||= begin
+        prev_type = nil
+
+        words.each_with_index do |word, index|
+          downcased = UnicodeUtils.downcase(word) # Даункейсим слово в чистом руби
+          current_type = RussianInflect::Detector.new(word).word_type # Детектим тип слова
+          return index if adverbal_start?(downcased, prev_type, current_type)
+          prev_type = current_type
+        end
+
+        -1
+      end
+    end
+
+    def inflecting_words
+      return words if words.length == 1
+      return words if adverbal_index == -1
+      words[0..(adverbal_index - 1)]
     end
   end
 end
