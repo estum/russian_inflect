@@ -44,10 +44,8 @@ module RussianInflect
 
     # Проверяем, подходит ли правило под наше слово
     def match?(word, rule, match_whole_word = false)
-      rule[:test].any? do |chars|
-        test = match_whole_word ? word : word.slice([word.length - chars.length, 0].max..-1)
-        test == chars
-      end
+      return rule[:test].include?(word) if match_whole_word
+      rule[:test].any? { |chars| chars == word.slice([word.length - chars.length, 0].max..-1) }
     end
 
     # Применяем правило к слову
