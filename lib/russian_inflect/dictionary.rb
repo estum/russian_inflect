@@ -10,8 +10,8 @@ module RussianInflect
   end
 
   class UnknownRuleException < UnknownError
-    def initialize(name)
-      super "Can't find rule for `#{name}'."
+    def initialize(word)
+      super "Can't find rule for `#{word}'."
     end
   end
 
@@ -28,25 +28,25 @@ module RussianInflect
     private
 
     # Найти правило и применить к имени с учетом склонения
-    def find_and_apply(name, gcase, type)
-      apply(name, gcase, find_for(name, type))
+    def find_and_apply(word, gcase, type)
+      apply(word, gcase, find_for(word, type))
     rescue UnknownRuleException
-      name
+      word
     end
 
     # Найти подходящее правило в исключениях или суффиксах
-    def find_for(name, type)
+    def find_for(word, type)
       if scoped_rules = @rules[type][:exceptions]
-        ex = find(name, scoped_rules, true)
+        ex = find(word, scoped_rules, true)
         return ex if ex
       end
 
       scoped_rules = @rules[type][:suffixes]
-      find(name, scoped_rules) || raise(UnknownRuleException, name)
+      find(word, scoped_rules) || raise(UnknownRuleException, word)
     end
 
-    def find(name, scoped_rules, match_whole_word = false)
-      scoped_rules.detect { |rule| match?(name, rule, match_whole_word) }
+    def find(word, scoped_rules, match_whole_word = false)
+      scoped_rules.detect { |rule| match?(word, rule, match_whole_word) }
     end
 
     # Проверить правило
