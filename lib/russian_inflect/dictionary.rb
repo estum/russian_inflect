@@ -22,20 +22,15 @@ module RussianInflect
 
     def inflect(word, gcase)
       type = RussianInflect::Detector.new(word).word_type
-      find_and_apply(word, gcase, type)
-    end
-
-    private
-
-    # Найти правило и применить к имени с учетом склонения
-    def find_and_apply(word, gcase, type)
-      apply(word, gcase, find_for(word, type))
+      apply(word, gcase, rule_for(word, type)) # Найти правило и применить к слову с учетом падежа
     rescue UnknownRuleException
       word
     end
 
+    private
+
     # Найти подходящее правило в исключениях или суффиксах
-    def find_for(word, type)
+    def rule_for(word, type)
       if scoped_rules = @rules[type][:exceptions]
         ex = find(word, scoped_rules, true)
         return ex if ex
