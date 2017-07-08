@@ -22,27 +22,27 @@ module RussianInflect
     end
 
     def to_case(gcase, force_downcase: false)
-      after_prepositions = false
+      should_modify = true
       prev_type = nil
 
       # Проходимся по каждому слову
       inflected_words = words.map do |word|
         # Используем внешнюю переменную для хранения режима (пахнет)
-        unless after_prepositions
+        if should_modify
           # Даункейсим слово в чистом руби
           downcased = UnicodeUtils.downcase(word)
           # Детектим тип слова
           current_type = RussianInflect::Detector.new(word).word_type
 
           # Еще одна внешняя переменная с предыдущим состоянием (пахнет)
-          if preposition?(downcased, prev_type, current_type)
+          if adverbal?(downcased, prev_type, current_type)
             # Все это нужно для предложений вида "Камень в реке", чтобы "в реке" не склонялось
-            after_prepositions = true
+            should_modify = false
           else
             word = RussianInflect::Rules[GROUPS[@case_group]].inflect(word, downcased, gcase)
             word = UnicodeUtils.downcase(word) if force_downcase
+            prev_type = current_type
           end
-          prev_type = current_type
         end
 
         word
@@ -51,8 +51,8 @@ module RussianInflect
       inflected_words.join(' ')
     end
 
-    # Является ли текущее слово предлогом?
-    def preposition?(word, prev_type, current_type)
+    # Является ли текущее слово началом дополнительной (и несклоняющейся) части предложения?
+    def adverbal?(word, prev_type, current_type)
       RussianInflect::Rules.prepositions.include?(word) ||
         RussianInflect::Detector.new(word).case_group != @case_group ||
         (prev_type == :noun && current_type == :noun)
