@@ -21,8 +21,7 @@ module RussianInflect
     end
 
     def inflect(word, gcase)
-      type = RussianInflect::Detector.new(word).word_type
-      apply(word, gcase, rule_for(word, type)) # Найти правило и применить к слову с учетом падежа
+      apply(word, gcase, rule_for(word)) # Найти правило и применить к слову с учетом падежа
     rescue UnknownRuleException
       word
     end
@@ -30,7 +29,9 @@ module RussianInflect
     private
 
     # Ищем правило в исключениях или суффиксах
-    def rule_for(word, type)
+    def rule_for(word)
+      type = RussianInflect::Detector.new(word).word_type
+
       find(word, @rules[type][:exceptions], true) ||
         find(word, @rules[type][:suffixes]) ||
         raise(UnknownRuleException, word)
