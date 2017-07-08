@@ -21,7 +21,8 @@ module RussianInflect
     end
 
     def inflect(word, gcase)
-      apply(word, gcase, rule_for(word)) # Найти правило и применить к слову с учетом падежа
+      # Склоняем слово по модификатору, который находим по падежу и правилу для слова
+      modify(word, modificator_for(gcase, rule_for(word)))
     rescue UnknownRuleException
       word
     end
@@ -49,8 +50,7 @@ module RussianInflect
     end
 
     # Применяем правило к слову
-    def apply(word, gcase, rule)
-      modificator = modificator_for(gcase, rule)
+    def modify(word, modificator)
       result = word.dup
 
       modificator.each_char do |char|
