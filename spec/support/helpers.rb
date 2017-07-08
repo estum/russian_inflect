@@ -14,6 +14,11 @@ class Minitest::Spec
           it 'inflects through module method' do
             assert { RussianInflect.inflect(answers[0], inflection_case) == answers[index] }
           end
+
+          it 'inflects with force_downcase equals true' do
+            inflected = inflector.to_case(inflection_case, force_downcase: true)
+            assert { inflected == UnicodeUtils.downcase(answers[index]) }
+          end
         end
       end
     end
