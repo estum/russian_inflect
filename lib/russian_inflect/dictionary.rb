@@ -20,9 +20,9 @@ module RussianInflect
       @rules = rules
     end
 
-    def inflect(word, gcase)
+    def inflect(word, downcased, gcase)
       # Склоняем слово по модификатору, который находим по падежу и правилу для слова
-      modify(word, modificator_for(gcase, rule_for(word)))
+      modify(word, modificator_for(gcase, rule_for(downcased)))
     rescue UnknownRuleException
       word
     end

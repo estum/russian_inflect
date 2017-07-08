@@ -39,15 +39,8 @@ module RussianInflect
             # Все это нужно для предложений вида "Камень в реке", чтобы "в реке" не склонялось
             after_prepositions = true
           else
-            result = RussianInflect::Rules[GROUPS[@case_group]].inflect(downcased, gcase)
-            word = if force_downcase
-                     result
-                   else
-                     # Возвращаем предложение в тот кейс, в котором оно изначально было
-                     # Нужно делать, потому что склоняем мы только в даункейсе
-                     len = downcased.each_char.take_while.with_index { |x, n| x == result[n] }.size
-                     word[0, len] << result[len..-1]
-                   end
+            word = RussianInflect::Rules[GROUPS[@case_group]].inflect(word, downcased, gcase)
+            word = UnicodeUtils.downcase(word) if force_downcase
           end
           prev_type = current_type
         end
