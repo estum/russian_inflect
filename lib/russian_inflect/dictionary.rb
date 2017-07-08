@@ -51,17 +51,8 @@ module RussianInflect
 
     # Применяем правило к слову
     def modify(word, modificator)
-      result = word.dup
-
-      modificator.each_char do |char|
-        case char
-        when '.' then nil
-        when '-' then result.slice!(-1)
-        else          result << char
-        end
-      end
-
-      result
+      return word if modificator == '.'
+      word.slice(0..(-1 - modificator.count('-'))) + modificator.tr('-', '')
     end
 
     # Получить модификатор для указанного падежа из указанного правила
