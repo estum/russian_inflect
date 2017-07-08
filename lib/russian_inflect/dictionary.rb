@@ -25,7 +25,7 @@ module RussianInflect
       find_and_apply(word, gcase, type)
     end
 
-    protected
+    private
 
     # Найти правило и применить к имени с учетом склонения
     def find_and_apply(name, gcase, type)
