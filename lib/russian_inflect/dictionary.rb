@@ -20,9 +20,9 @@ module RussianInflect
       @rules = rules
     end
 
-    def inflect(word, downcased, gcase)
+    def inflect(word, gcase)
       # Склоняем слово по модификатору, который находим по падежу и правилу для слова
-      modify(word, modificator_for(gcase, rule_for(downcased)))
+      modify(word, modificator_for(gcase, rule_for(word)))
     rescue UnknownRuleException
       word
     end
@@ -32,9 +32,10 @@ module RussianInflect
     # Ищем правило в исключениях или суффиксах
     def rule_for(word)
       type = RussianInflect::Detector.new(word).word_type
+      downcased = UnicodeUtils.downcase(word) # Даункейсим слово в чистом руби
 
-      find(word, @rules[type][:exceptions], true) ||
-        find(word, @rules[type][:suffixes]) ||
+      find(downcased, @rules[type][:exceptions], true) ||
+        find(downcased, @rules[type][:suffixes]) ||
         raise(UnknownRuleException, word)
     end
 
