@@ -46,18 +46,20 @@ module RussianInflect
     end
 
     def adverbal_index
-      @adverbal_index ||= begin
-        prev_type = nil
+      @adverbal_index ||= calculate_adverbal_index
+    end
 
-        words.each_with_index do |word, index|
-          downcased = UnicodeUtils.downcase(word) # Даункейсим слово в чистом руби
-          current_type = RussianInflect::Detector.new(word).word_type # Детектим тип слова
-          return index if adverbal_start?(downcased, prev_type, current_type)
-          prev_type = current_type
-        end
+    def calculate_adverbal_index
+      prev_type = nil
 
-        -1
+      words.each_with_index do |word, index|
+        downcased = UnicodeUtils.downcase(word) # Даункейсим слово в чистом руби
+        current_type = RussianInflect::Detector.new(word).word_type # Детектим тип слова
+        return index if adverbal_start?(downcased, prev_type, current_type)
+        prev_type = current_type
       end
+
+      -1
     end
 
     def inflecting_words
