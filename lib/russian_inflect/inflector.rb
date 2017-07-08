@@ -24,11 +24,11 @@ module RussianInflect
     def to_case(gcase, force_downcase: false)
       inflected_words = inflecting_words.map do |word|
         downcased = UnicodeUtils.downcase(word) # Даункейсим слово в чистом руби
-        word = RussianInflect::Rules[GROUPS[@case_group]].inflect(word, downcased, gcase)
-        force_downcase ? UnicodeUtils.downcase(word) : word
+        RussianInflect::Rules[GROUPS[@case_group]].inflect(word, downcased, gcase)
       end
 
-      (inflected_words + adverbal).join(' ')
+      dest = (inflected_words + adverbal).join(' ')
+      force_downcase ? UnicodeUtils.downcase(dest) : dest
     end
 
     private
